@@ -5,18 +5,17 @@ import AuthHeader from "../AuthHeader/AuthHeader";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 export default function AppHeader() {
-
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
-        <header >
+        <header>
             <nav>
-                <NavLink to="/">
-                    Home
-                </NavLink>
-                <NavLink to="/contacts">
-                    Contacts
-                </NavLink>
+                <NavLink to="/">Home</NavLink>
+                
+                {isLoggedIn && (
+                    <NavLink to="/contacts">Contacts</NavLink>
+                )}
+
                 {isLoggedIn ? <UserIsLogin /> : <AuthHeader />}
             </nav>
         </header>
